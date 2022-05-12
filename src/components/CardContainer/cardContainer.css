@@ -1,0 +1,10 @@
+.card-root {
+  width: 90vw;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 30px;
+
+  /* background-color: red; */
+}

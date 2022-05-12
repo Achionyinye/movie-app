@@ -1,0 +1,9 @@
+.nav {
+    background-color: black;
+    padding: 20px 0;
+    color: #fff;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
