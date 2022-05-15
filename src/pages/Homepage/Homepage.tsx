@@ -9,23 +9,40 @@ export const API_KEY = "46fbd66e";
 
 const Homepage = () => {
   const [movies, setMovies] = useState<any>([]);
+  const [isFetching, setIsFetching] = useState(false);
+  const [searchError, setSearchError] = useState<any>(null);
+  const [searchQuery, setSearchQuery] = useState("america");
 
   useEffect(() => {
     const fetchMovies = async () => {
-      const response = await axios.get(
-        `http://www.omdbapi.com/?s=america&apikey=${API_KEY}`
-      );
-      setMovies(response.data.Search);
+      try {
+        setSearchError(null);
+        setMovies([]);
+        setIsFetching(true);
+        const response = await axios.get(
+          `http://www.omdbapi.com/?s=${searchQuery}&apikey=${API_KEY}`
+        );
+        setIsFetching(false);
+        setMovies(response.data.Search);
+      } catch (error: any) {
+        setMovies([]);
+        setSearchError(error);
+        setIsFetching(false);
+      }
     };
 
     fetchMovies();
-  }, []);
+  }, [searchQuery]);
 
   return (
     <div>
       <Navbar />
-      <Search />
-      <CardContainer movies={movies} />
+      <Search setSearchQuery={setSearchQuery} />
+      <CardContainer
+        movies={movies}
+        isFetching={isFetching}
+        error={searchError}
+      />
     </div>
   );
 };

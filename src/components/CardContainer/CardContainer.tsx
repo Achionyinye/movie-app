@@ -1,15 +1,23 @@
 import React, { useState } from "react";
 import MovieCard from "../MovieCard/MovieCard";
 import "./cardContainer.css";
+import { Circles } from "react-loader-spinner";
 
 interface IProp {
   movies: Record<string, any>[];
+  isFetching: boolean;
+  error: any;
 }
 
 const CardContainer = (props: IProp) => {
-  console.log(props.movies, "***MOVIES");
   return (
     <div className="card-root">
+      {props.isFetching && (
+        <Circles ariaLabel="loading-indicator" />
+      )}
+
+      {props.error && <h1>An error ocurred!!</h1>}
+
       {props.movies.map((movie) => (
         <MovieCard
           key={movie.imdbID}
