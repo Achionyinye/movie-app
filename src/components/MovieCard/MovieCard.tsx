@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
-import cardImg from "../../images/iron-man.jpeg";
 import "./movieCard.css";
+import { Link } from "react-router-dom";
 
 interface IProp {
   poster: string;
@@ -12,11 +11,11 @@ interface IProp {
 const MovieCard = (prop: IProp) => {
   const { poster, title, year } = prop;
   return (
-    <div className="card">
+    <Link to={`/${prop.imdbId}`} className="card">
       <h5 className="card-title">{title}</h5>
       <img className="card-img" src={poster} alt="iron man" />
       <p className="card-date">({year})</p>
-    </div>
+    </Link>
   );
 };
 
