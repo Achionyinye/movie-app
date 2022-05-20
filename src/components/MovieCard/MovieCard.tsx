@@ -11,7 +11,7 @@ interface IProp {
 const MovieCard = (prop: IProp) => {
   const { poster, title, year } = prop;
   return (
-    <Link to={`/${prop.imdbId}`} className="card">
+    <Link to={`/movie/${prop.imdbId}`} className="card">
       <h5 className="card-title">{title}</h5>
       <img className="card-img" src={poster} alt="iron man" />
       <p className="card-date">({year})</p>

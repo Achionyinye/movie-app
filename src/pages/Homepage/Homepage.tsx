@@ -13,6 +13,8 @@ const Homepage = () => {
   const [searchError, setSearchError] = useState<any>(null);
   const [searchQuery, setSearchQuery] = useState("america");
 
+  console.log(`http://www.omdbapi.com/?s=${searchQuery}&apikey=${API_KEY}`);
+  
   useEffect(() => {
     const fetchMovies = async () => {
       try {
@@ -23,7 +25,7 @@ const Homepage = () => {
           `http://www.omdbapi.com/?s=${searchQuery}&apikey=${API_KEY}`
         );
         setIsFetching(false);
-        setMovies(response.data.Search);
+        setMovies(response.data.Search);//here we are setting the movies to the response.data.Search
       } catch (error: any) {
         setMovies([]);
         setSearchError(error);

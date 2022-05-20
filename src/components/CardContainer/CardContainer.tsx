@@ -11,6 +11,8 @@ interface IProp {
 
 const CardContainer = (props: IProp) => {
   return (
+    <>
+   
     <div className="card-root">
       {props.isFetching && (
         <Circles ariaLabel="loading-indicator" />
@@ -28,6 +30,7 @@ const CardContainer = (props: IProp) => {
         />
       ))}
     </div>
+    </>
   );
 };
 
