@@ -10,9 +10,9 @@ const MovieDetailPage = () => {
   const params = useParams();
 
   const [response, setResponse] = useState<any>(null);
-  const [movies, setMovies] = useState<any>([]);
-  const [isFetching, setIsFetching] = useState(false);
-  const [searchError, setSearchError] = useState<any>(null);
+  const [, setMovies] = useState<any>([]);
+  const [, setIsFetching] = useState(false);
+  const [, setSearchError] = useState<any>(null);
 
   console.log(params)
   // console.log(params.movieId);
@@ -39,7 +39,7 @@ const MovieDetailPage = () => {
       }
     };
     fetchMovie();
-  }, []);
+  }, [params.movieId]);
 
   console.log(response);
   return (
@@ -48,7 +48,7 @@ const MovieDetailPage = () => {
       <h2>Movie Detail Page</h2>
       <div className="detailPage">
         <div style={{ display: "flex", justifyContent: "center", width: "30%" }}>
-          <img src={response?.Poster} className="image-cover" />
+          <img src={response?.Poster} className="image-cover" alt ="movie-poster"/>
         </div>
         <div style={{ marginLeft: "1rem" }}>
           <div style={{ display: "flex", justifyContent: "space-between" }} >

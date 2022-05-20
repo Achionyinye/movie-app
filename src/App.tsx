@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import Homepage from "./pages/Homepage/Homepage";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import MovieDetailPage from "./pages/MovieDetailPage/MovieDetailPage";
 // import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 

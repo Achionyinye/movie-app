@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import MovieCard from "../MovieCard/MovieCard";
 import "./cardContainer.css";
 import { Circles } from "react-loader-spinner";
