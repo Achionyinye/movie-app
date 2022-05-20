@@ -24,7 +24,7 @@ const MovieDetailPage = () => {
         setMovies([]);
         setIsFetching(true);
         const response = await axios.get(
-          `http://www.omdbapi.com/?i=${params.movieId}&apikey=${API_KEY}`
+          `https://www.omdbapi.com/?i=${params.movieId}&apikey=${API_KEY}`
         );
         setIsFetching(false);
         //console.log(response.data);
