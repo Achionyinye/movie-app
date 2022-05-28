@@ -40,17 +40,15 @@ const MovieDetailPage = () => {
     };
     fetchMovie();
   }, [params.movieId]);
-
-  console.log(response);
   return (
     <div>
       <Navbar />
-      <h2>Movie Detail Page</h2>
+      <h2>Details of the Movie</h2>
       <div className="detailPage">
         <div style={{ display: "flex", justifyContent: "center", width: "30%" }}>
           <img src={response?.Poster} className="image-cover" alt ="movie-poster"/>
         </div>
-        <div style={{ marginLeft: "1rem" }}>
+        <div className="detail" style={{ marginLeft: "1rem" }}>
           <div style={{ display: "flex", justifyContent: "space-between" }} >
             <p><b>Title:</b></p>
             <p style={{ textAlign: "right" }}>{response?.Title}</p>

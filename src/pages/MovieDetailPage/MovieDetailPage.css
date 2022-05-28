@@ -2,26 +2,102 @@
  * {
     font-family: 'Manrope', sans-serif;
  }
-
 .detailPage{
     display: flex;
-    width: 70%;
-    margin: 0 auto;
-    /* height: 100%;
-    justify-content: space-around; */
-    /* flex-direction: column;
-    align-items: center; */
-}
-.pic{
-    width: 150%;
+    flex-direction: row;
+    width: 90%;
     height: 100%;
+    margin: 0 auto;
+}
+.detail{
+    width: 60%;
+    height: 100%;
+    display: grid;
     justify-content: center;
     align-items: center;
+    line-height: 2;
+    font-size: 1rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-
-
 .image-cover {
     width: auto;
     height: auto;
     object-fit: contain;
+    
 }
+h2{
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    font-family: cursive;
+}
+@media screen and (max-width: 1180px) {
+    .detailPage {
+      display : grid;
+    }
+    .image-cover {
+      margin-top: 10%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      align-items: center;
+      padding-left: 50%;
+    }
+    .detail{
+        width: 100%;
+        height: 100%;
+        padding-left: 10%;
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        line-height: 2;
+        font-size: 1rem;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+  }
+@media screen and (max-width: 992px) {
+    .detailPage {
+      display : grid;
+    }
+    .image-cover {
+      margin-top: 10%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      align-items: center;
+    }
+    .detail{
+        width: 60%;
+        height: 100%;
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        line-height: 2;
+        font-size: 1rem;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+  }
+@media screen and (max-width: 667px) {
+    .detailPage {
+      display : grid; 
+    }
+    .image-cover {
+      margin-top: 10%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      align-items: center;
+      margin-left: 8rem;
+      
+    }
+    .detail{
+        width: 60%;
+        height: 100%;
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        line-height: 2;
+        font-size: 1rem;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+  }
