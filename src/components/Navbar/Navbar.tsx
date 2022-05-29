@@ -1,9 +1,9 @@
 import React from 'react'
-import './nav.css';
+import style from './nav.module.css';
 
 const Navbar = () => {
   return (
-    <div className='nav'>Hooked</div>
+    <div className={style.nav}>Hooked</div>
   )
 }
 

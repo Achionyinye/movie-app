@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import axios from "axios";
 import { API_KEY } from "../Homepage/Homepage";
-import './MovieDetailPage.css';
+import style from './MovieDetailPage.module.css';
 
 
 const MovieDetailPage = () => {
@@ -15,7 +15,6 @@ const MovieDetailPage = () => {
   const [, setSearchError] = useState<any>(null);
 
   console.log(params)
-  // console.log(params.movieId);
 
   useEffect(() => {
     const fetchMovie = async () => {
@@ -27,11 +26,10 @@ const MovieDetailPage = () => {
           `https://www.omdbapi.com/?i=${params.movieId}&apikey=${API_KEY}`
         );
         setIsFetching(false);
-        //console.log(response.data);
 
         setResponse(response.data);
         setMovies(response.data);
-        // console.log(response.data.Poster);
+  
       } catch (error: any) {
         setMovies([{ movieId: "", Title: "", Poster: "", Year: "", imdbID: "" }]);
         setSearchError(error);
@@ -44,11 +42,11 @@ const MovieDetailPage = () => {
     <div>
       <Navbar />
       <h2>Details of the Movie</h2>
-      <div className="detailPage">
-        <div style={{ display: "flex", justifyContent: "center", width: "30%" }}>
-          <img src={response?.Poster} className="image-cover" alt ="movie-poster"/>
+      <div className={style.detailPage}>
+        <div style={{ display: "flex", justifyContent: "center", width: "80%" }}>
+          <img src={response?.Poster} className={style.imageCover} alt ="movie-poster"/>
         </div>
-        <div className="detail" style={{ marginLeft: "1rem" }}>
+        <div className={style.detail}>
           <div style={{ display: "flex", justifyContent: "space-between" }} >
             <p><b>Title:</b></p>
             <p style={{ textAlign: "right" }}>{response?.Title}</p>

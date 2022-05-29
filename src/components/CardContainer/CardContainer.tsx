@@ -1,5 +1,5 @@
 import MovieCard from "../MovieCard/MovieCard";
-import "./cardContainer.css";
+import style from "./cardContainer.module.css";
 import { Circles } from "react-loader-spinner";
 
 interface IProp {
@@ -9,15 +9,15 @@ interface IProp {
 }
 
 const CardContainer = (props: IProp) => {
+  console.log(props.error)
   return (
     <>
-   
-    <div className="card-root">
+    <div className={style.cardRoot}>     
       {props.isFetching && (
         <Circles ariaLabel="loading-indicator" />
       )}
 
-      {props.error && <h1>An error ocurred!!</h1>}
+      {props.error && <h1 style={{color: "white"}}>No result!!</h1>}
 
       {props.movies.map((movie) => (
         <MovieCard

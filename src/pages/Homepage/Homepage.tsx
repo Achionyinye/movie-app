@@ -4,6 +4,7 @@ import CardContainer from "../../components/CardContainer/CardContainer";
 import Navbar from "../../components/Navbar/Navbar";
 import Search from "../../components/Search/Search";
 import axios from "axios";
+// import debounce from 'lodash.debounce';
 
 export const API_KEY = "46fbd66e";
 
@@ -13,7 +14,7 @@ const Homepage = () => {
   const [searchError, setSearchError] = useState<any>(null);
   const [searchQuery, setSearchQuery] = useState("america");
 
-  console.log(`https://www.omdbapi.com/?s=${searchQuery}&apikey=${API_KEY}`);
+  //console.log(`https://www.omdbapi.com/?s=${searchQuery}&apikey=${API_KEY}`);
   
   useEffect(() => {
     const fetchMovies = async () => {
@@ -25,9 +26,15 @@ const Homepage = () => {
           `https://www.omdbapi.com/?s=${searchQuery}&apikey=${API_KEY}`
         );
         setIsFetching(false);
+        console.log(response.data.Search);
+        if(!response.data.Search) {
+          setSearchError("No movies found");
+          return;
+        }
         setMovies(response.data.Search);//here we are setting the movies to the response.data.Search
       } catch (error: any) {
         setMovies([]);
+        console.log(error);
         setSearchError(error);
         setIsFetching(false);
       }
@@ -35,6 +42,8 @@ const Homepage = () => {
 
     fetchMovies();
   }, [searchQuery]);
+
+  //const changeSearch = debounce(fetchMovies, 1000);
 
   return (
     <div>

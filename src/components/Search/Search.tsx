@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import "./search.css";
+import style from "./search.module.css";
+import debounce from 'lodash.debounce';
 
 interface IProps {
   setSearchQuery: React.Dispatch<React.SetStateAction<string>>
@@ -8,21 +9,32 @@ interface IProps {
 const Search = (props: IProps) => {
   const [searchInput, setSearchInput] = useState("");
 
-  const handleSearch = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
     props.setSearchQuery(searchInput);
   };
+  // const debouncedLogHi = _.debounce(Search, 1500)
+ // const changeSearch = debounce(Handlefetch, 1000);
+  //  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   setSearchInput(event.target.value);
+  //  };
+  //  const debouncedHandleChange = debounce(handleChange, 1000);
+
+    // const updateSearchQuery = debounce(handleSearch, 1000);
+  //  const debouncedHandleChange = (query: string) => {
+  //    debounce(handleChange, 1000)(query);
+  //  };
 
   return (
-    <div className="root">
-      <form className="form">
+    <div className={style.root}>
+      <form className={style.form}>
         <input
-          onChange={(event) => setSearchInput(event.target.value)}
+          onChange={handleSearch}
           type="search"
-          className="search-box"
+          className={style.searchBox}
           value={searchInput}
         />
-        <button onClick={handleSearch} className="search">
+        <button onClick={() =>props.setSearchQuery(searchInput) } className={style.search}>
           Search
         </button>
       </form>

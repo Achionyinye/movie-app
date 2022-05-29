@@ -1,0 +1,18 @@
+.cardRoot {
+  width: 90vw;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 50px;
+}
+@media screen and (max-width: 992px) {
+  .cardRoot {
+    width: 100vw;
+    padding: 5%;
+    display: grid;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+  }
+}
