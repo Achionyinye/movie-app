@@ -9,26 +9,26 @@ interface IProp {
 }
 
 const CardContainer = (props: IProp) => {
-  console.log(props.error)
+  console.log(props.error);
   return (
     <>
-    <div className={style.cardRoot}>     
-      {props.isFetching && (
-        <Circles ariaLabel="loading-indicator" />
-      )}
+      <div className={style.cardRoot}>
+        {props.isFetching && <Circles ariaLabel="loading-indicator" />}
 
-      {props.error && <h1 style={{color: "white"}}>No result!!</h1>}
+        {props.error && !props.movies.length && (
+          <h1 style={{ color: "white" }}>No result!!</h1>
+        )}
 
-      {props.movies.map((movie) => (
-        <MovieCard
-          key={movie.imdbID}
-          poster={movie.Poster}
-          title={movie.Title}
-          imdbId={movie.imdbID}
-          year={movie.Year}
-        />
-      ))}
-    </div>
+        {props.movies.map((movie) => (
+          <MovieCard
+            key={movie.imdbID}
+            poster={movie.Poster}
+            title={movie.Title}
+            imdbId={movie.imdbID}
+            year={movie.Year}
+          />
+        ))}
+      </div>
     </>
   );
 };

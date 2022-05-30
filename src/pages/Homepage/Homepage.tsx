@@ -4,7 +4,7 @@ import CardContainer from "../../components/CardContainer/CardContainer";
 import Navbar from "../../components/Navbar/Navbar";
 import Search from "../../components/Search/Search";
 import axios from "axios";
-// import debounce from 'lodash.debounce';
+import debounce from "lodash.debounce";
 
 export const API_KEY = "46fbd66e";
 
@@ -15,40 +15,42 @@ const Homepage = () => {
   const [searchQuery, setSearchQuery] = useState("america");
 
   //console.log(`https://www.omdbapi.com/?s=${searchQuery}&apikey=${API_KEY}`);
-  
-  useEffect(() => {
-    const fetchMovies = async () => {
-      try {
-        setSearchError(null);
-        setMovies([]);
-        setIsFetching(true);
-        const response = await axios.get(
-          `https://www.omdbapi.com/?s=${searchQuery}&apikey=${API_KEY}`
-        );
-        setIsFetching(false);
-        console.log(response.data.Search);
-        if(!response.data.Search) {
-          setSearchError("No movies found");
-          return;
-        }
-        setMovies(response.data.Search);//here we are setting the movies to the response.data.Search
-      } catch (error: any) {
-        setMovies([]);
-        console.log(error);
-        setSearchError(error);
-        setIsFetching(false);
-      }
-    };
 
+  const fetchMovies = async () => {
+    try {
+      setSearchError(null);
+      setMovies([]);
+      setIsFetching(true);
+      const response = await axios.get(
+        `https://www.omdbapi.com/?s=${searchQuery || "america"}&apikey=${API_KEY}`
+      );
+      setIsFetching(false);
+      console.log(response.data.Search);
+      if (!response.data.Search) {
+        setSearchError("No movies found");
+        return;
+      }
+      setMovies(response.data.Search); //here we are setting the movies to the response.data.Search
+    } catch (error: any) {
+      setMovies([]);
+      console.log(error);
+      setSearchError(error);
+      setIsFetching(false);
+    }
+  };
+
+  const debounceSearch = debounce(fetchMovies, 2000);
+
+  useEffect(() => {
     fetchMovies();
-  }, [searchQuery]);
+  }, []);
 
   //const changeSearch = debounce(fetchMovies, 1000);
 
   return (
     <div>
       <Navbar />
-      <Search setSearchQuery={setSearchQuery} />
+      <Search debounceSearch={debounceSearch} setSearchQuery={setSearchQuery} />
       <CardContainer
         movies={movies}
         isFetching={isFetching}

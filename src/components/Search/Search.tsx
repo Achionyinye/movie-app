@@ -4,6 +4,7 @@ import debounce from 'lodash.debounce';
 
 interface IProps {
   setSearchQuery: React.Dispatch<React.SetStateAction<string>>
+  debounceSearch: () => void
 }
 
 const Search = (props: IProps) => {
@@ -11,7 +12,9 @@ const Search = (props: IProps) => {
 
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
+    setSearchInput(event.target.value);
     props.setSearchQuery(searchInput);
+    props.debounceSearch();
   };
   // const debouncedLogHi = _.debounce(Search, 1500)
  // const changeSearch = debounce(Handlefetch, 1000);
@@ -34,9 +37,9 @@ const Search = (props: IProps) => {
           className={style.searchBox}
           value={searchInput}
         />
-        <button onClick={() =>props.setSearchQuery(searchInput) } className={style.search}>
+        {/* <button onClick={() =>props.setSearchQuery(searchInput) } className={style.search}>
           Search
-        </button>
+        </button> */}
       </form>
     </div>
   );
