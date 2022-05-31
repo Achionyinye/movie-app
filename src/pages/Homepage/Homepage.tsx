@@ -14,8 +14,6 @@ const Homepage = () => {
   const [searchError, setSearchError] = useState<any>(null);
   const [searchQuery, setSearchQuery] = useState("america");
 
-  //console.log(`https://www.omdbapi.com/?s=${searchQuery}&apikey=${API_KEY}`);
-
   const fetchMovies = async (query:string) => {
     try {
       setSearchError(null);
@@ -46,8 +44,7 @@ const Homepage = () => {
     fetchMovies("america");
   }, []);
 
-  //const changeSearch = debounce(fetchMovies, 1000);
-
+  
   return (
     <div>
       <Navbar />

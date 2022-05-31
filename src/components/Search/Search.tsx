@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import style from "./search.module.css";
-import debounce from 'lodash.debounce';
 
 interface IProps {
   setSearchQuery: React.Dispatch<React.SetStateAction<string>>
