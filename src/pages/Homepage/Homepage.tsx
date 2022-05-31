@@ -44,7 +44,6 @@ const Homepage = () => {
     fetchMovies("america");
   }, []);
 
-
   return (
     <div>
       <Navbar />
