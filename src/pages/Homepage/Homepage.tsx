@@ -42,7 +42,8 @@ const Homepage = () => {
 
   useEffect(() => {
     fetchMovies("america");
-  }, []);
+  }, [fetchMovies]);
+
 
   return (
     <div>
