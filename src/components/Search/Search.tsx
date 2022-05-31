@@ -4,17 +4,18 @@ import debounce from 'lodash.debounce';
 
 interface IProps {
   setSearchQuery: React.Dispatch<React.SetStateAction<string>>
-  debounceSearch: () => void
+  debounceSearch: (query:string) => void
 }
 
 const Search = (props: IProps) => {
   const [searchInput, setSearchInput] = useState("");
 
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
-    event.preventDefault();
+    // event.preventDefault();
     setSearchInput(event.target.value);
     props.setSearchQuery(searchInput);
-    props.debounceSearch();
+    console.log(event.target.value)
+    props.debounceSearch(event.target.value);
   };
   // const debouncedLogHi = _.debounce(Search, 1500)
  // const changeSearch = debounce(Handlefetch, 1000);

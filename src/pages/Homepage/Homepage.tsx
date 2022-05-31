@@ -16,13 +16,14 @@ const Homepage = () => {
 
   //console.log(`https://www.omdbapi.com/?s=${searchQuery}&apikey=${API_KEY}`);
 
-  const fetchMovies = async () => {
+  const fetchMovies = async (query:string) => {
     try {
       setSearchError(null);
       setMovies([]);
       setIsFetching(true);
+      console.log(searchQuery, "searchQuery");
       const response = await axios.get(
-        `https://www.omdbapi.com/?s=${searchQuery || "america"}&apikey=${API_KEY}`
+        `https://www.omdbapi.com/?s=${query || "america"}&apikey=${API_KEY}`
       );
       setIsFetching(false);
       console.log(response.data.Search);
@@ -39,10 +40,10 @@ const Homepage = () => {
     }
   };
 
-  const debounceSearch = debounce(fetchMovies, 2000);
+  const debounceSearch = debounce(fetchMovies, 1000);
 
   useEffect(() => {
-    fetchMovies();
+    fetchMovies("america");
   }, []);
 
   //const changeSearch = debounce(fetchMovies, 1000);
