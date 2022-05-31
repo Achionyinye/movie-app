@@ -37,9 +37,9 @@ const Search = (props: IProps) => {
           className={style.searchBox}
           value={searchInput}
         />
-        <button onClick={() =>props.setSearchQuery(searchInput) } className={style.search}>
+        {/* <button onClick={() =>props.setSearchQuery(searchInput) } className={style.search}>
           Search
-        </button>
+        </button> */}
       </form>
     </div>
   );
